@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npx lerna run dev",
+    "dev:web": "npx lerna run dev --scope=manyu-web",
+    "dev:server": "npx lerna run dev --scope=manyu-server"
+  },
+  "devDependencies": {
+    "lerna": "^6.5.1"
+  }
+}
