@@ -1,18 +1,41 @@
 import config from '../config';
-import mongo from 'koa-mongo';
-import type { User } from '../generators/user';
+import type { User, UserFilter } from '../generators/user';
 import { userGenerator } from '../generators/user';
-import { responseGenerator } from '../generators/response';
 import { DefaultState, DefaultContext } from 'koa';
 import Router from '@koa/router';
 const { DEBUG, MOCK } = config.mode;
+
+/**
+ * 方法体，包含用户所有的接口
+ */
 export const useUserRouter = (router: Router<DefaultState, DefaultContext>) => {
   /**
-   * 获取所有用户信息列表
-   * @method GET
+   * 获取用户列表
+   * @method POST
    * @return 用户列表:User[]
    */
-  router.get('/getUserList', async (ctx, next) => {
+  router.post<{}, { request: { body: UserFilter } }>('/getUserList', async (ctx, next) => {
+    const {
+      revenue,
+      weight,
+      height,
+      education,
+      smoking,
+      drinking,
+      career,
+      marriage,
+      ethnicity,
+      house,
+      car,
+      sex,
+      birthday,
+      age,
+      habitation,
+      home,
+      vx,
+      phone,
+      hc,
+    } = ctx.request.body;
     if (MOCK) {
       ctx.body = [userGenerator(), userGenerator(), userGenerator()];
     } else {
