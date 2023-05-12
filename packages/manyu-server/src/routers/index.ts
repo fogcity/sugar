@@ -2,10 +2,13 @@ import Router from '@koa/router';
 import config from '../config';
 import { useUserRouter } from './user';
 const router = new Router();
-
+const { DEBUG, MOCK } = config.mode;
 router.get('/', async (ctx, next) => {
-  if (config.mode.DEBUG) {
+  if (MOCK) {
     ctx.body = 'hello manyu';
+  }
+
+  if (DEBUG) {
   }
 });
 

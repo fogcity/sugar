@@ -11,6 +11,7 @@ const config = {
   },
   mode: {
     DEBUG: process.env.NODE_ENV === 'development',
+    MOCK: true,
   },
 };
 

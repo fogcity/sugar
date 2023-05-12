@@ -5,6 +5,7 @@ import { userGenerator } from '../generators/user';
 import { responseGenerator } from '../generators/response';
 import { DefaultState, DefaultContext } from 'koa';
 import Router from '@koa/router';
+const { DEBUG, MOCK } = config.mode;
 export const useUserRouter = (router: Router<DefaultState, DefaultContext>) => {
   /**
    * 获取所有用户信息列表
@@ -12,11 +13,13 @@ export const useUserRouter = (router: Router<DefaultState, DefaultContext>) => {
    * @return 用户列表:User[]
    */
   router.get('/getUserList', async (ctx, next) => {
-    if (config.mode.DEBUG) {
-      ctx.body = responseGenerator()([userGenerator(), userGenerator(), userGenerator()]);
+    if (MOCK) {
+      ctx.body = [userGenerator(), userGenerator(), userGenerator()];
     } else {
+      if (DEBUG) console.log();
+
       const result = await ctx.db.collection('users').find().toArray();
-      ctx.body = responseGenerator()(result);
+      ctx.body = result;
     }
   });
 
@@ -28,11 +31,12 @@ export const useUserRouter = (router: Router<DefaultState, DefaultContext>) => {
    */
   router.get('/getUserById/:id', async (ctx, next) => {
     const { id } = ctx.params;
-    if (config.mode.DEBUG) {
-      ctx.body = responseGenerator()(userGenerator({ id }));
+    if (MOCK) {
+      ctx.body = userGenerator({ id });
     } else {
+      if (DEBUG) console.log();
       const result = await ctx.db.collection('users').findOne({ _id: id });
-      ctx.body = responseGenerator()(result);
+      ctx.body = result;
     }
   });
 
@@ -44,14 +48,15 @@ export const useUserRouter = (router: Router<DefaultState, DefaultContext>) => {
    */
   router.post<{}, { request: { body: User } }>('/createOrUpdateUser', async (ctx, next) => {
     const user = ctx.request.body;
-    if (config.mode.DEBUG) {
+    if (MOCK) {
       ctx.body = `${'id' in user ? '更新' : '新建'}用户信息成功`;
     } else {
+      if (DEBUG) console.log();
       let result;
       if ('id' in user) result = await ctx.db.collection('users').updateOne((v: User) => v.id == user.id, user);
       else result = await ctx.db.collection('users').insertOne(user);
       const userId = result.toString();
-      ctx.body = responseGenerator()({ userId });
+      ctx.body = { userId };
     }
   });
 
@@ -64,11 +69,12 @@ export const useUserRouter = (router: Router<DefaultState, DefaultContext>) => {
   router.post<{}, { request: { body: { id: string | number } } }>('/deleteUser', async (ctx, next) => {
     const { id } = ctx.request.body;
 
-    if (config.mode.DEBUG) {
+    if (MOCK) {
       ctx.body = `删除用户${id}成功`;
     } else {
+      if (DEBUG) console.log();
       const result = await ctx.db.collection('users').deleteOne((v: User) => v.id == id);
-      ctx.body = responseGenerator()();
+      ctx.body = {};
     }
   });
 };
