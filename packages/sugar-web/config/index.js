@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'manyu-web',
+  projectName: 'sugar-web',
   date: '2023-5-9',
   designWidth: 375,
   deviceRatio: {

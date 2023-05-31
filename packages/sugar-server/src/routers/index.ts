@@ -5,7 +5,7 @@ const router = new Router();
 const { DEBUG, MOCK } = config.mode;
 router.get('/', async (ctx, next) => {
   if (MOCK) {
-    ctx.body = 'hello manyu';
+    ctx.body = 'hello sugar';
   }
 
   if (DEBUG) {
