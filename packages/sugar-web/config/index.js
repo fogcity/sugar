@@ -1,16 +1,15 @@
 const config = {
   projectName: 'sugar-web',
-  date: '2023-5-9',
-  designWidth: 375,
+  date: '2023-5-31',
+  designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
-    828: 1.81 / 2,
-    375: 2 / 1
+    828: 1.81 / 2
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: ['@tarojs/plugin-html'],
+  plugins: [],
   defineConstants: {
   },
   copy: {
@@ -24,15 +23,12 @@ const config = {
   cache: {
     enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
   },
-  sass:{
-    data: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`
-  },
   mini: {
     postcss: {
       pxtransform: {
         enable: true,
         config: {
-          selectorBlackList: ['nut-']
+
         }
       },
       url: {
@@ -53,14 +49,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
-    // esnextModules: ['nutui-react'],
     postcss: {
-      pxtransform: {
-        enable: true,
-        config: {
-          selectorBlackList: ['nut-']
-        }
-      },
       autoprefixer: {
         enable: true,
         config: {

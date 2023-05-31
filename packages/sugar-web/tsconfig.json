@@ -22,6 +22,6 @@
       "node_modules/@types"
     ]
   },
-  "include": ["config/src", "./types"],
+  "include": ["./src", "./types"],
   "compileOnSave": false
 }

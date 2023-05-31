@@ -1,23 +1,29 @@
-import React from 'react'
-import { View } from '@tarojs/components'
-import {
-  Button
-} from "@nutui/nutui-react-taro";
-import './index.css'
+import { Component, PropsWithChildren } from 'react'
+import { View, Text } from '@tarojs/components'
+import { AtButton } from 'taro-ui'
 
-function Index() {
-  return (
-    <View className="nutui-react-demo">
-      <View className="index">
-        欢迎使用 NutUI React 开发 Taro 多端项目。
+import "taro-ui/dist/style/components/button.scss" // 按需引入
+import './index.scss'
+
+export default class Index extends Component<PropsWithChildren> {
+  componentDidMount () { }
+
+  componentWillUnmount () { }
+
+  componentDidShow () { }
+
+  componentDidHide () { }
+
+  render () {
+    return (
+      <View className='index'>
+        <Text>Hello world!</Text>
+        <AtButton type='primary'>I need Taro UI</AtButton>
+        <Text>Taro UI 支持 Vue 了吗？</Text>
+        <AtButton type='primary' circle={true}>支持</AtButton>
+        <Text>共建？</Text>
+        <AtButton type='secondary' circle={true}>来</AtButton>
       </View>
-      <View className="index">
-        <Button type="primary" className="btn">
-          NutUI React Button
-        </Button>
-      </View>
-    </View>
-  )
+    )
+  }
 }
-
-export default Index
