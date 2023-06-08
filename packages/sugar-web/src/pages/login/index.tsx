@@ -12,6 +12,12 @@ const Login = () => {
       url: "/pages/home/index",
     });
   };
+
+  const toPolicy = () => {
+    Taro.navigateTo({
+      url: "/pages/register/index",
+    });
+  };
   useEffect(() => {}, []);
   return (
     <View className="login-container">
@@ -36,7 +42,11 @@ const Login = () => {
           checked={permission}
         />
         同意
-        <Text className="permission" style={{ margin: "0 .5em" }}>
+        <Text
+          className="permission"
+          onClick={toPolicy}
+          style={{ margin: "0 .5em" }}
+        >
           {"<<" + "注册协议" + ">>"}
         </Text>
         <Text className="permission">{"<<" + "隐私协议" + ">>"}</Text>

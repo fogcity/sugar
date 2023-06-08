@@ -1,0 +1,30 @@
+export type User = {
+  id?: string;
+
+  name: string;
+  weight: number;
+  height: number;
+  education: number;
+  smoking: number;
+  drinking: number;
+  career: number;
+  marriage: number;
+  nickName: string;
+  revenue: number;
+  // requirements?: Requirements;
+  ethnicity: number;
+  house: number;
+  car: number;
+  sex: number;
+  birthday: string;
+  age: number;
+  habitation: string;
+  home: string;
+  vx: string;
+  phone: string;
+  hc: number;
+  introduction: string;
+  personality: string[];
+  photo: any[];
+  interests: string[];
+};

@@ -1,5 +1,6 @@
 import { View, Text } from "@tarojs/components";
 import { AtButton, AtTabBar } from "taro-ui";
+import My from "../my";
 
 import "./index.scss";
 import { useEffect, useState } from "react";
@@ -12,9 +13,9 @@ const Index = () => {
   };
   useEffect(() => {
     if (tab == 4) {
-      Taro.navigateTo({
-        url: "/pages/login/index",
-      });
+      // Taro.navigateTo({
+      //   url: "/pages/login/index",
+      // });
     }
   }, [tab]);
   return (
@@ -31,6 +32,7 @@ const Index = () => {
         onClick={handleTabChange}
         current={tab}
       />
+      {tab == 4 && <My />}
     </View>
   );
 };
