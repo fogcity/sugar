@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "npx lerna run dev",
     "dev:web": "npx lerna run dev --scope=sugar-web",
+    "dev:h5": "npx lerna run dev --scope=sugar-h5",
     "dev:server": "npx lerna run dev --scope=sugar-server"
   },
   "devDependencies": {
