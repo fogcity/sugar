@@ -1,0 +1,26 @@
+.demo-text-1 {
+    background: rgb(210, 110, 155);
+    height: 100%;
+}
+.demo-text-2 {
+    background: rgb(141, 181, 235);
+    height: 100%;
+}
+.demo-text-3 {
+    background: rgb(140, 210, 110);
+    height: 100%;
+}
+
+.my-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    gap: 1em;
+    .avatar-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+  align-items: center;
+    }
+}
